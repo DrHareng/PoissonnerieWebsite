@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Poissonnerie - Accueil{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <center>
+            <h1>La Poissonnerie</h1>
+            <h3>La communauté Française d'Infinity sur TTS</h3>
+        </center>
+        {% if app.user %}
+        <center class="mt-5">
+            <p>Bonjour, {{ app.user.displayname ?? app.user.username }}!</p>
+            <img style="border-radius: 50%;" src="https://cdn.discordapp.com/avatars/{{user.discordId}}/{{user.avatar}}" alt="Avatar pour {{app.user.username}}"/>
+        </center>
+        {% endif %}
+    </div>
+{% endblock %}

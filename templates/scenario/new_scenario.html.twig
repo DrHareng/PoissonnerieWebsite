@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New scenario{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Nouveau scénario</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <button type="submit" class="btn btn-success">Sauvegarder</button>
+            <a href="{{ path('scenario_list') }}" class="btn btn-secondary">Retour</a>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

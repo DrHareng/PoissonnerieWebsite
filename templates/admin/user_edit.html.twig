@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Edit User {{ user.username }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <button type="submit" class="btn btn-success">Sauvegarder</button>
+            <a href="{{ path('admin_user_list') }}" class="btn btn-secondary">Retour</a>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

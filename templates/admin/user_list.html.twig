@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-4">Liste des utilisateurs</h1>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Avatar</th>
+                <th>Username</th>
+                <th>Displayname</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>
+                        {% if user.avatar %}
+                            <img src="https://cdn.discordapp.com/avatars/{{ user.discordId }}/{{ user.avatar }}.png" alt="Avatar" class="rounded-circle" width="40" height="40">
+                        {% else %}
+                            <span class="text-muted">No Avatar</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.displayname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        {% for role in user.roles %}
+                            <span class="badge bg-primary">{{ role|replace({'ROLE_':''})|lower|capitalize }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-secondary" href="{{ path('admin_user_edit', {'id': user.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" class="text-center">No users found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
